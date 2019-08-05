@@ -57,7 +57,7 @@ table, th,  td{
     display: flex;
     border: 2px solid black;
     width: 90%;
-    height: 80vmin;
+    height: 70vmin;
     background: white;
     flex-direction: column;
 }

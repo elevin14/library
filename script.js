@@ -12,8 +12,16 @@ Book.prototype.info = function() {
     return title + ' by ' + author + ', ' + pages + ' pages, ' + readYet
 }
 
-function addBookToLibrary(book){
-    myLibrary.push(book)
+function addBookToLibrary(){
+    openAddBookForm();
+    console.log('2nd click')
+}
+
+function openAddBookForm(){
+    let formArea = document.querySelector(".buttons")
+    while (formArea.firstChild){
+        formArea.removeChild(formArea.firstChild)
+    }
 }
 
 function render(){
@@ -34,9 +42,10 @@ function render(){
 
 document.querySelector('#newBook').addEventListener('click', (e) => {
     addBookToLibrary()
+    console.log('first click')
 });
 
 theHobbit = new Book('The Hobbit','J.R.R. Tolkien',295,false)
-addBookToLibrary(theHobbit)
-addBookToLibrary(theHobbit)
+myLibrary.push(theHobbit)
+myLibrary.push(theHobbit)
 render()
