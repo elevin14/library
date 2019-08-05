@@ -12,9 +12,31 @@ Book.prototype.info = function() {
     return title + ' by ' + author + ', ' + pages + ' pages, ' + readYet
 }
 
-function addBookToLibrary(){
-    
+function addBookToLibrary(book){
+    myLibrary.push(book)
 }
 
-//theHobbit = new Book('The Hobbit','J.R.R. Tolkien',295,false)
-//console.log(theHobbit.info());
+function render(){
+    const shelf = document.querySelector('#shelf')
+    myLibrary.forEach(book => {
+        let newBook = document.createElement("tr")
+        newBook.className = "book"
+        for (var prop in book){
+            let newCol = document.createElement("td")
+            newCol.innerText = book[prop]
+            newBook.appendChild(newCol)
+            if(prop == 'read'){break;}
+        }
+        newBook.appendChild(document.createElement("button"))
+        shelf.appendChild(newBook)
+    })
+}
+
+document.querySelector('#newBook').addEventListener('click', (e) => {
+    addBookToLibrary()
+});
+
+theHobbit = new Book('The Hobbit','J.R.R. Tolkien',295,false)
+addBookToLibrary(theHobbit)
+addBookToLibrary(theHobbit)
+render()
