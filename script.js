@@ -13,7 +13,6 @@ Book.prototype.info = function() {
 }
 
 function addBookToLibrary(){
-    openAddBookForm();
     console.log('2nd click')
 }
 
@@ -22,6 +21,11 @@ function openAddBookForm(){
     while (formArea.firstChild){
         formArea.removeChild(formArea.firstChild)
     }
+    
+    formArea.innerHTML += 
+    '<form>     <div>       <label for="title">Title:</label >       <input type="text" id="title" name="bookTitle">     </div>     <div>       <label for="author">Author:</label>       <input type="text" id="author" name="bookAuthor">     </div>     <div>       <label for="pages">Pages:</label>       <input type="text" id="pages" name="bookPages">     </div>     <div>         <input type="radio" name="hasRead" value="true"> Has been read<br>    <input type="radio" name="hasRead" value="false" checked> Has not been read<br>     </div>     <div class="button">             <button type="submit" id="submitForm">submit</button>           </div>   </form>';
+
+    document.querySelector('#submitForm').addEventListener('click', (e) => addBookToLibrary());
 }
 
 function render(){
@@ -41,8 +45,7 @@ function render(){
 }
 
 document.querySelector('#newBook').addEventListener('click', (e) => {
-    addBookToLibrary()
-    console.log('first click')
+    openAddBookForm()
 });
 
 theHobbit = new Book('The Hobbit','J.R.R. Tolkien',295,false)
